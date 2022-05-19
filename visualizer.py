@@ -64,7 +64,7 @@ with open(dot_filename, 'w') as f:
         src = entry[1]
         dst = entry[2]
         i, e = index_2d(layer_table_list, src)
-        src_data_size = layer_table_list[i][2] # TODO: need the size of layer output in mb
+        src_data_size = layer_table_list[i][2] # the size of layer output in mb
         # src_param_size = compute_num_param(src_data_size)
         # print(f"{src} -- {dst}[label=\"{src_data_size}\\n({src_data_param})\"];")
         print(f"{src} -- {dst}[label=\"{src_data_size}MB\"];")
