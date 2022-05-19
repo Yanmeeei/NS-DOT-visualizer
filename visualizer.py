@@ -64,7 +64,7 @@ with open(dot_filename, 'w') as f:
 
     # layer info (node)
     for entry in layer_table_list:
-        print(f"{entry[0]}[label=\"{entry[0]}\\n{entry[1]}s\"]")
+        print(f"{entry[0]}[label=\"{entry[0]}\\n{entry[1]}s\\n{entry[3]}MB\"]")
 
     # layer dependency (edge)
     for entry in dependency_table_list:
