@@ -1,7 +1,7 @@
 ## How to use
 
 ```commandline
-python3 visualizer.py table_1.xlsx table_2.xlsx suffix 
+python3 visualizer.py table_1.xlsx table_2.xlsx [suffix] 
 ```
 Where table_1 contains the following info: 
 - Layer name

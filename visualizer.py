@@ -27,7 +27,7 @@ def compute_num_param(size):
     return np.prod(l)
 
 
-if len(sys.argv) != 4:
+if len(sys.argv) < 3:
     print(">>> Incorrect usage, check README for instructions.")
     print(">>> Quitting.")
     exit(1)
@@ -38,7 +38,10 @@ if len(sys.argv) != 4:
 
 layer_table_path = sys.argv[1]
 dependency_table_path = sys.argv[2]
-suffix = sys.argv[3]
+if len(sys.argv) == 4:
+    suffix = sys.argv[3]
+else:
+    suffix = ""
 
 layer_table_list = table2list(layer_table_path)
 dependency_table_list = table2list(dependency_table_path)
@@ -47,7 +50,11 @@ dependency_table_list = table2list(dependency_table_path)
 # Begin DOT code generation
 # ==============================================
 original_stdout = sys.stdout
-dot_filename = 'result_DOT_code.dot'
+if suffix != "":
+    dot_filename = f'result_DOT_code_{suffix}.dot'
+else:
+    dot_filename = 'result_DOT_code.dot'
+
 with open(dot_filename, 'w') as f:
     sys.stdout = f  # Change the standard output to the file we created.
     print("graph {")
@@ -75,6 +82,3 @@ with open(dot_filename, 'w') as f:
 # ==============================================
 # Begin DOT render
 # ==============================================
-
-src = graphviz.Source.from_file(filename=dot_filename)
-src.render('visualized_model_yolov4')
