@@ -1,6 +1,7 @@
 import pandas as pd
 import sys
 import numpy as np
+import graphviz
 
 
 def table2list(table_path):
@@ -45,21 +46,35 @@ dependency_table_list = table2list(dependency_table_path)
 # ==============================================
 # Begin DOT code generation
 # ==============================================
+original_stdout = sys.stdout
+dot_filename = 'result_DOT_code.dot'
+with open(dot_filename, 'w') as f:
+    sys.stdout = f  # Change the standard output to the file we created.
+    print("graph {")
 
-print("graph {")
+    # layout settings
+    print("rankdir=LR")
 
-# layer info
-for entry in layer_table_list:
-    print(f"{entry[0]}[xlabel=\"{entry[1]}s\"]")
-    # print(f"{entry[1]}s, {entry[2]}mb")
+    # layer info (node)
+    for entry in layer_table_list:
+        print(f"{entry[0]}[label=\"{entry[0]}\\n{entry[1]}s\"]")
 
-# layer dependency
-for entry in dependency_table_list:
-    src = entry[1]
-    dst = entry[2]
-    i, e = index_2d(layer_table_list, src)
-    src_data_size = layer_table_list[i][4]
-    src_data_param = compute_num_param(src_data_size)
-    print(f"{src} -- {dst}[label=\"{src_data_size}({src_data_param})\"];")
+    # layer dependency (edge)
+    for entry in dependency_table_list:
+        src = entry[1]
+        dst = entry[2]
+        i, e = index_2d(layer_table_list, src)
+        src_data_size = layer_table_list[i][2] # TODO: need the size of layer output in mb
+        # src_param_size = compute_num_param(src_data_size)
+        # print(f"{src} -- {dst}[label=\"{src_data_size}\\n({src_data_param})\"];")
+        print(f"{src} -- {dst}[label=\"{src_data_size}MB\"];")
 
-print("}")
+    print("}")
+    sys.stdout = original_stdout  # Reset the standard output to its original value
+
+# ==============================================
+# Begin DOT render
+# ==============================================
+
+src = graphviz.Source.from_file(filename=dot_filename)
+src.render('visualized_model_yolov4')
