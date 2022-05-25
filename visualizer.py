@@ -5,7 +5,7 @@ import graphviz
 
 
 def table2list(table_path):
-    df = pd.read_excel(table_path)
+    df = pd.read_csv(table_path)
     for column_name in df.columns.values:
         df[column_name] = df[column_name].apply(lambda x: str(x).replace(u'\xa0', u''))
         df[column_name] = df[column_name].apply(lambda x: str(x).replace(u' ', u''))
