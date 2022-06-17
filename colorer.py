@@ -27,7 +27,8 @@ def compute_num_param(size):
     return np.prod(l)
 
 
-if len(sys.argv) < 3:
+
+if len(sys.argv) < 4:
     print(">>> Incorrect usage, check README for instructions.")
     print(">>> Quitting.")
     exit(1)
@@ -38,14 +39,16 @@ if len(sys.argv) < 3:
 
 layer_table_path = sys.argv[1]
 dependency_table_path = sys.argv[2]
-if len(sys.argv) == 4:
-    suffix = sys.argv[3]
+partition_table_path = sys.argv[3]
+if len(sys.argv) == 5:
+    suffix = sys.argv[4]
 else:
     suffix = ""
 
 layer_table_list = table2list(layer_table_path)
 dependency_table_list = table2list(dependency_table_path)
-
+layer_partition_list = table2list(partition_table_path)
+colors = ["red", "blue", "black", "yellow", "green", "purple"]
 # ==============================================
 # Begin DOT code generation
 # ==============================================
@@ -64,14 +67,18 @@ with open(dot_filename, 'w') as f:
 
     # layer info (node)
     for entry in layer_table_list:
-        print(f"{entry[0]}[label=\"{entry[0]}\\n{entry[1]}ms\\n{entry[3]}MB\"]")
+        device = 0
+        for entry_part in layer_partition_list:
+            if entry_part[0] == entry[0]:
+                device = entry_part[1]
+        print(f"{entry[0]}[label=\"{entry[0]}\", style=filled, fillcolor=\"{colors[int(device)]}\"]")
 
     # layer dependency (edge)
     for entry in dependency_table_list:
-        src = entry[1]
-        dst = entry[2]
+        src = entry[0]
+        dst = entry[1]
         i, e = index_2d(layer_table_list, src)
-        src_data_size = layer_table_list[i][2] # the size of layer output in mb
+        src_data_size = layer_table_list[i][1] # the size of layer output in mb
         # src_param_size = compute_num_param(src_data_size)
         # print(f"{src} -- {dst}[label=\"{src_data_size}\\n({src_data_param})\"];")
         print(f"{src} -- {dst}[label=\"{src_data_size}MB\"];")

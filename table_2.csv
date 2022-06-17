@@ -86,6 +86,11 @@ hd_conv14_x14,hd_conv14,hd_conv15
 hd_conv15_x15,hd_conv15,hd_conv16
 hd_conv16_x16,hd_conv16,hd_conv17
 hd_conv17_x17,hd_conv17,hd_conv18
-hd_conv2_x2,hd_conv2,head_output
-hd_conv10_x10,hd_conv10,head_output
-hd_conv18_x18,hd_conv18,head_output
+hd_conv2_x2,hd_conv2,decode1
+hd_conv10_x10,hd_conv10,decode2
+hd_conv18_x18,hd_conv18,decode3
+d1,decode1,non_max_suppression
+d2,decode2,non_max_suppression
+d3,decode3,non_max_suppression
+max,non_max_suppression,wrapping_up
+wrap,wrapping_up,output
