@@ -12,6 +12,7 @@ def table2list(table_path):
     df_list = df.values.tolist()
     return df_list
 
+
 def index_2d(data, search):
     for i, e in enumerate(data):
         try:
@@ -49,6 +50,7 @@ dependency_table_list = table2list(dependency_table_path)
 # ==============================================
 # Begin DOT code generation
 # ==============================================
+
 original_stdout = sys.stdout
 if suffix != "":
     dot_filename = f'result_DOT_code_{suffix}.dot'
