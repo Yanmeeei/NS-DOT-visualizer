@@ -48,7 +48,7 @@ else:
 layer_table_list = table2list(layer_table_path)
 dependency_table_list = table2list(dependency_table_path)
 layer_partition_list = table2list(partition_table_path)
-colors = ["red", "blue", "black", "yellow", "green", "purple"]
+colors = ["red", "blue", "black", "yellow", "green", "purple", "white", "orange"]
 # ==============================================
 # Begin DOT code generation
 # ==============================================
@@ -71,14 +71,14 @@ with open(dot_filename, 'w') as f:
         for entry_part in layer_partition_list:
             if entry_part[0] == entry[0]:
                 device = entry_part[1]
-        print(f"{entry[0]}[label=\"{entry[0]}\", style=filled, fillcolor=\"{colors[int(device)]}\"]")
+        print(f"{entry[0]}[label=\"{entry[0]}\\n{entry[1]}ms\\n{entry[3]}MB\", style=filled, fillcolor=\"{colors[int(device)]}\"]")
 
     # layer dependency (edge)
     for entry in dependency_table_list:
         src = entry[0]
         dst = entry[1]
         i, e = index_2d(layer_table_list, src)
-        src_data_size = layer_table_list[i][1] # the size of layer output in mb
+        src_data_size = layer_table_list[i][4] # the size of layer output in mb
         # src_param_size = compute_num_param(src_data_size)
         # print(f"{src} -- {dst}[label=\"{src_data_size}\\n({src_data_param})\"];")
         print(f"{src} -- {dst}[label=\"{src_data_size}MB\"];")

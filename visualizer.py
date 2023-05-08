@@ -68,12 +68,10 @@ with open(dot_filename, 'w') as f:
 
     # layer dependency (edge)
     for entry in dependency_table_list:
-        src = entry[1]
-        dst = entry[2]
+        src = entry[0]
+        dst = entry[1]
         i, e = index_2d(layer_table_list, src)
-        src_data_size = layer_table_list[i][2] # the size of layer output in mb
-        # src_param_size = compute_num_param(src_data_size)
-        # print(f"{src} -- {dst}[label=\"{src_data_size}\\n({src_data_param})\"];")
+        src_data_size = layer_table_list[i][4]  # the size of layer output in mb
         print(f"{src} -- {dst}[label=\"{src_data_size}MB\"];")
 
     print("}")
