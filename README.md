@@ -7,8 +7,8 @@ python3 visualizer.py prof.csv dep.csv file_suffix
 ```
 Where prof.csv contains the following info: 
 - Layer name
-- Average time consumption (in millisecond)
-- Output size (in mb)
+- Average time consumption (in second)
+- Output size (in MB)
 - Average memory consumption
 
 and dep.csv contains the dependency:
