@@ -12,7 +12,7 @@ config = ["prof_faster_end",
 for filename in config:
 
     fig, ax1 = plt.subplots()
-    df_year = pd.read_csv("end2end_plot/" + filename + ".csv")
+    df_year = pd.read_csv("end2end_plot_model/" + filename + ".csv")
     x1_list = []
     for i in df_year['device']:
         x1_list.append(i)
@@ -33,4 +33,4 @@ for filename in config:
 
     # Set legends
     plt.legend(handles=[b0], loc='best')
-    plt.savefig(f"end2end_plot/plots/{filename}.png", bbox_inches='tight', dpi=100)
+    plt.savefig(f"end2end_plot_model/plots/{filename}.png", bbox_inches='tight', dpi=100)
