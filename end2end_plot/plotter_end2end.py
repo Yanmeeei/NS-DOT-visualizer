@@ -24,13 +24,13 @@ for filename in config:
     ax1.set_ylabel("Time (s)", fontsize=12)
     ax1.set_title(filename, fontsize=14)
 
-    # 双Y轴标签颜色设置
+    # Set colors for y-axis tags
     ax1.yaxis.label.set_color("black")
 
-    # 双Y轴刻度颜色设置
+    # Set colors for y-axis marks
     ax1.tick_params(axis='y', colors="black")
     plt.xticks(rotation=70)
 
-    # 图例设置
+    # Set legends
     plt.legend(handles=[b0], loc='best')
     plt.savefig(f"end2end_plot/plots/{filename}.png", bbox_inches='tight', dpi=100)

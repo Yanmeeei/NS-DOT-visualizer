@@ -35,14 +35,14 @@ for filename in config:
     ax1.set_ylabel("Size (MB)", fontsize=13)
     # ax1.set_title(filename + ' per layer output size', fontsize=14)
 
-    # 双Y轴标签颜色设置
+    # Set colors for y-axis tags
     ax1.yaxis.label.set_color("black")
 
-    # 双Y轴刻度颜色设置
+    # Set colors for y-axis marks
     ax1.tick_params(axis='y', colors="black")
     plt.xticks(rotation=90)
 
-    # 图例设置
+    # Set legends
     plt.legend(handles=[b0], loc='best', prop={'size': 13})
     plt.grid(axis='y', linestyle='--')
     for label in (ax1.get_yticklabels()):

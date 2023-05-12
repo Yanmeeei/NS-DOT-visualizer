@@ -25,13 +25,13 @@ ax1.set_xlabel("Bandwidth (Gbps)", fontsize=12)
 ax1.set_ylabel("Optimization (%)", fontsize=12)
 ax1.set_title("Faster-RCNN on Jetson-AGX", fontsize=14)
 
-# 双Y轴标签颜色设置
+# Set colors for y-axis tags
 ax1.yaxis.label.set_color(line1.get_color())
 
-# 双Y轴刻度颜色设置
+# Set colors for y-axis marks
 ax1.tick_params(axis='y', colors=line1.get_color())
 
-# 图例设置
+# Set legends
 plt.legend(handles=[p1, note], loc='lower right')
 plt.grid()
 plt.savefig("rcnn-agx-old.png", bbox_inches='tight', dpi=100)

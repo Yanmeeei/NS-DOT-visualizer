@@ -3,9 +3,9 @@ A visualization tool that takes parsed neuro-network info as input, and generate
 
 ### How to use
 ```shell
-python3 visualizer.py prof.csv dep.csv file_suffix 
+python3 visualizer.py prof.csv dep.csv optional_file_suffix
 ```
-Where prof.csv contains the following info: 
+Where prof.csv contains the following profiling info: 
 - Layer name
 - Average time consumption (in second)
 - Output size (in MB)
@@ -21,12 +21,16 @@ This visualizer generates a **result_DOT_code_\<suffix>.txt**.
 - In prof.csv, measure the data for every layer only once.
 - In dep.csv, measure the dependency for every output, but only before it is used in another layer.
 - When recording the dependency, remember to include concat operations.
+
+### Plot the models in NS paper (yolov4, yolox, yolor, faster-rcnn)
+The profile and dependency files for those models are stored in the `paper` directory. To generate DOT code for those models, copy the corresponding csv files to the root directory of this project, and run the visualizer. 
+
 ---
 # NS Colorer
 A coloring tool that visualizes the partition of a neuro-network by different colors. Please use a DOT visualizer as above-mentioned to color the graph.  
 ### How to use
 ```shell
-python3 colorer.py prof.csv dep.csv part.csv file_suffix 
+python3 colorer.py prof.csv dep.csv part.csv optional_file_suffix 
 ```
 
 Where part.csv contains a partition of a model:

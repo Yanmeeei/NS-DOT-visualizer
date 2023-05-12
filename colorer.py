@@ -1,7 +1,6 @@
 import pandas as pd
 import sys
 import numpy as np
-import graphviz
 
 
 def table2list(table_path):
