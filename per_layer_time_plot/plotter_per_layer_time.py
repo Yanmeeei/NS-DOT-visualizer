@@ -1,4 +1,3 @@
-import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
@@ -10,6 +9,7 @@ config = [
     "prof_yolox",
     "prof_yolor",
 ]
+
 power_config = [
     # "nano_0",
     "nano_1",

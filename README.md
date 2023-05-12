@@ -44,4 +44,4 @@ colors = ["red", "blue", "black", "yellow", "green", "purple", "white", "orange"
 ```
 ---
 # Plotters
-There are several plotters located in child directories. Those are for visualizing optimization results. 
+There are several plotters located in child directories. See teh corresponding readme files in those directories for more info. 

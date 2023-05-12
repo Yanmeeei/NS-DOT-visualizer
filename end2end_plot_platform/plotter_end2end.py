@@ -1,17 +1,16 @@
-import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
 
-config = ["agx",
-          "nano",
+config = ["prof_agx1.csv",
+          "prof_nano1.csv",
           ]
 
 for filename in config:
 
     fig, ax1 = plt.subplots()
     fig.set_size_inches(5, 4)
-    df = pd.read_csv("prof_" + filename + "1.csv")
+    df = pd.read_csv(filename)
     x1_list = []
     for i in df['model']:
         x1_list.append(i)

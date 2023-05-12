@@ -1,18 +1,17 @@
-import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
 
-config = ["prof_faster_end",
-          "prof_yolov4_end",
-          "prof_yolox_end",
-          "prof_yolor_end",
+config = ["prof_faster_end.csv",
+          "prof_yolor_end.csv",
+          "prof_yolov4_end.csv",
+          "prof_yolox_end.csv",
           ]
 
 for filename in config:
 
     fig, ax1 = plt.subplots()
-    df_year = pd.read_csv("end2end_plot_model/" + filename + ".csv")
+    df_year = pd.read_csv("end2end_plot_model/" + filename)
     x1_list = []
     for i in df_year['device']:
         x1_list.append(i)
