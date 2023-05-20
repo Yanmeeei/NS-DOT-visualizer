@@ -24,7 +24,7 @@ This visualizer generates a **result_DOT_code_\<suffix>.txt**.
 - When recording the dependency, remember to include concat operations.
 
 ### Plot the models in NS paper (yolov4, yolox, yolor, faster-rcnn)
-The profile and dependency files for those models are stored in the `paper` directory. To generate DOT code for those models, copy the corresponding csv files to the root directory of this project, and run the visualizer. 
+The profile, dependency and sample partitioning files for those models are stored in the `paper` directory. To generate DOT code for those models, copy the corresponding csv files to the root directory of this project, and run the visualizer. 
 
 ---
 # NS Colorer
