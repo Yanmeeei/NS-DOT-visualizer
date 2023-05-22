@@ -1,7 +1,13 @@
 # NS Visualizer
+
 A visualization tool that takes parsed neuro-network info as input, and generates DOT code that can visualize the model via a DOT visualizer (e.g. https://dreampuf.github.io/GraphvizOnline/#).
 
 An example of the resulting graph can be found in the `example` directory. 
+
+### Prerequisite
+```bash
+pip install graphviz
+```
 ### How to use
 ```shell
 python3 visualizer.py prof.csv dep.csv optional_file_suffix
@@ -46,4 +52,4 @@ colors = ["red", "blue", "black", "yellow", "green", "purple", "white", "orange"
 ```
 ---
 # Plotters
-There are several plotters located in child directories. See teh corresponding readme files in those directories for more info. 
+There are several plotters located in child directories. See the corresponding readme files in those directories for more info. 
