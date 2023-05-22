@@ -3,6 +3,7 @@ import sys
 import numpy as np
 
 
+# Convert a dataframe to a python list
 def table2list(table_path):
     df = pd.read_csv(table_path)
     for column_name in df.columns.values:
