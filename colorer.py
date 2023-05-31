@@ -47,7 +47,7 @@ else:
 layer_table_list = table2list(layer_table_path)
 dependency_table_list = table2list(dependency_table_path)
 layer_partition_list = table2list(partition_table_path)
-colors = ["red", "blue", "black", "yellow", "green", "purple", "white", "orange"]
+colors = ["red", "blue", "black", "yellow", "green", "purple", "white", "orange", "gray", "pink", "violet", "indigo"]
 
 # ==============================================
 # Begin DOT code generation
