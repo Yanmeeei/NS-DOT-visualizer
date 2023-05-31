@@ -1,30 +1,37 @@
 # NS Visualizer
+
 A visualization tool that takes parsed neuro-network info as input, and generates DOT code that can visualize the model via a DOT visualizer (e.g. https://dreampuf.github.io/GraphvizOnline/#).
 
 An example of the resulting graph can be found in the `example` directory. 
+
+### Prerequisite
+```bash
+pip install graphviz
+```
 ### How to use
 ```shell
 python3 visualizer.py prof.csv dep.csv optional_file_suffix
 ```
-Where prof.csv contains the following profiling info: 
+Where `prof.csv` contains the following profiling info: 
 - Layer name
 - Average time consumption (in second)
 - Output size (in MB)
 - Average memory consumption
 
-and dep.csv contains the dependency:
+and `dep.csv` defines the inter-layer dependency of the model:
 - Source 
 - Destination
 
 This visualizer generates a **result_DOT_code_\<suffix>.txt**.
 
 ### Notes for input
-- In prof.csv, measure the data for every layer only once.
-- In dep.csv, measure the dependency for every output, but only before it is used in another layer.
+- In `prof.csv`, measure the data for every layer only once.
+- In `dep.csv`, measure the dependency for every output, but only before it is used in another layer.
 - When recording the dependency, remember to include concat operations.
 
 ### Plot the models in NS paper (yolov4, yolox, yolor, faster-rcnn)
 The profile, dependency and sample partitioning files for those models are stored in the `paper` directory. To generate DOT code for those models, copy the corresponding csv files to the root directory of this project, and run the visualizer. 
+You can also copy the relevant csv files from running the optimizer in the `obj-detection-optimizer` repo
 
 ---
 # NS Colorer
@@ -45,4 +52,4 @@ colors = ["red", "blue", "black", "yellow", "green", "purple", "white", "orange"
 ```
 ---
 # Plotters
-There are several plotters located in child directories. See teh corresponding readme files in those directories for more info. 
+There are several plotters located in child directories. See the corresponding readme files in those directories for more info. 
